@@ -19,7 +19,7 @@ from django.urls import path, include
 
 from apps.common import views
 from apps.common.views import HomeView, SignUpView, DashboardView, ProfileUpdateView, ProfileView, ChartView, \
-    OrderListView
+    OrderListView, AboutView
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -29,6 +29,7 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('profile-update/', ProfileUpdateView.as_view(), name='profile-update'),
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('about/', AboutView.as_view(), name='about'),
     path('register/', SignUpView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(
         template_name='common/login.html'),
