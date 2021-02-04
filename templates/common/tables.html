@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Заказы</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Имя</th>
+                                            <th>Фамилия</th>
+                                            <th>Адрес</th>
+                                            <th>Индекс</th>
+                                            <th>Создан</th>
+                                            <th>Статус</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Имя</th>
+                                            <th>Фамилия</th>
+                                            <th>Адрес</th>
+                                            <th>Индекс</th>
+                                            <th>Создан</th>
+                                            <th>Статус</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {% for i in object_list %}
+                                        <tr>
+                                            <td>{{i.id}}</td>
+                                            <td>{{i.first_name}}</td>
+                                            <td>{{i.last_name}}</td>
+                                            <td>{{i.address}}</td>
+                                            <td>{{i.postal_code}}</td>
+                                            <td>{{i.created}}</td>
+                                            <td>{{i.paid}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+{% endblock content %}
