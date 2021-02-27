@@ -61,16 +61,21 @@
 
       <!-- Nav Item - Companies -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'suppliers' %}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Поставщики</span></a>
       </li>
 
       <!-- Nav Item - Contact -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'clients' %}">
           <i class="fas fa-fw fa-table"></i>
           <span>Клиенты</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'productsWare' %}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Склад</span></a>
       </li>
 
       <!-- Divider -->

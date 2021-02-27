@@ -19,7 +19,7 @@ from django.urls import path, include
 
 from apps.common import views
 from apps.common.views import HomeView, SignUpView, DashboardView, ProfileUpdateView, ProfileView, ChartView, \
-    OrderListView, AboutView
+    OrderListView, AboutView, SuppliersView, ClientsView
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,6 +30,8 @@ urlpatterns = [
     path('profile-update/', ProfileUpdateView.as_view(), name='profile-update'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('about/', AboutView.as_view(), name='about'),
+    path('suppliers/', SuppliersView.as_view(), name='suppliers'),
+    path('clients/', ClientsView.as_view(), name='clients'),
     path('register/', SignUpView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(
         template_name='common/login.html'),
@@ -79,6 +81,8 @@ urlpatterns = [
     path('orders/', include('apps.orders.urls'), name='orders'),
     path('payment/', include('apps.payment.urls'), name='payment'),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
+
+    path('productsWare/', views.product_list, name='productsWare'),
 
 ]
 if settings.DEBUG:
