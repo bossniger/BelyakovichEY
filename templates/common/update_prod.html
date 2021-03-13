@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h1>Новый поставщик</h1>
+    <form method="POST" class="product-form">{% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="save btn btn-default">Сохранить</button>
+    </form>
+{% endblock %}

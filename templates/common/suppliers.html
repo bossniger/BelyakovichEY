@@ -14,30 +14,30 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Организация</th>
+                                            <th>ФИО</th>
                                             <th>Адрес</th>
-                                            <th>Индекс</th>
-                                            <th>Товар</th>
-                                            <th>Создан</th>
-                                            <th>Статус</th>
+                                            <th>Город</th>
+                                            <th>Страна</th>
+                                            <th>Телефон</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {% for i in object_list %}
+                                    {% for supplier in suppliers %}
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{supplier.id}}</td>
+                                            <td>{{supplier.name}}</td>
+                                            <td>{{supplier.agent}}</td>
+                                            <td>{{supplier.address}}</td>
+                                            <td>{{supplier.city}}</td>
+                                            <td>{{supplier.country}}</td>
+                                            <td>{{supplier.phone}}</td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-    <a href="#" class="btn btn-sm btn-primary shadow-sm">Новый поставщик</a>
+    <a href="{% url 'newsupplier' %}" class="btn btn-sm btn-primary shadow-sm">Новый поставщик</a>
                     </div>
 
                 </div>

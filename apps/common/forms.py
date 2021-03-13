@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+from apps.shop.models import Product
 from apps.userprofile.models import Profile
 
 
@@ -43,3 +44,10 @@ class ProfileForm(forms.ModelForm):
             'birth_date',
             'profile_image'
         ]
+
+
+class ProductUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('category', 'name', 'price', 'stock', 'available', )
+        readonly_fields = ['created']

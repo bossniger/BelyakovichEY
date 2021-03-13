@@ -19,7 +19,7 @@ from django.urls import path, include
 
 from apps.common import views
 from apps.common.views import HomeView, SignUpView, DashboardView, ProfileUpdateView, ProfileView, ChartView, \
-    OrderListView, AboutView, SuppliersView, ClientsView
+    OrderListView, AboutView, ClientsView, SuppliersListView
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,7 +30,7 @@ urlpatterns = [
     path('profile-update/', ProfileUpdateView.as_view(), name='profile-update'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('about/', AboutView.as_view(), name='about'),
-    path('suppliers/', SuppliersView.as_view(), name='suppliers'),
+    path('suppliers/', views.suppliers_list, name='suppliers'),
     path('clients/', ClientsView.as_view(), name='clients'),
     path('register/', SignUpView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(
@@ -83,6 +83,11 @@ urlpatterns = [
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
 
     path('productsWare/', views.product_list, name='productsWare'),
+    url(r'^remove/(?P<product_id>\d+)/$', views.remove_it, name='remove_it'),
+    url(r'^update/(?P<product_id>\d+)/$', views.update_prod, name='update_prod'),
+
+    path('newsupplier/', views.new_supplier, name='newsupplier'),
+    #url(r'^$', views.cart_detail, name='cart_detail'),
 
 ]
 if settings.DEBUG:
