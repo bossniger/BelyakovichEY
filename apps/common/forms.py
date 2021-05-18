@@ -51,3 +51,9 @@ class ProductUpdateForm(forms.ModelForm):
         model = Product
         fields = ('category', 'name', 'price', 'stock', 'available', )
         readonly_fields = ['created']
+
+class ProductAddForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('category', 'name', 'price', 'stock', 'available',)
+        readonly_fields = ['created']

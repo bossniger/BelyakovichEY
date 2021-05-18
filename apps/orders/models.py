@@ -19,7 +19,7 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
 
     def __str__(self):
-        return 'Order {}'.format(self.id)
+        return f'Order {self.pk}'
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())

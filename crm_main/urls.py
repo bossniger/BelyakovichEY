@@ -31,7 +31,7 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('about/', AboutView.as_view(), name='about'),
     path('suppliers/', views.suppliers_list, name='suppliers'),
-    path('clients/', ClientsView.as_view(), name='clients'),
+    path('clients/', views.clients_list, name='clients_list'),
     path('register/', SignUpView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(
         template_name='common/login.html'),
@@ -85,8 +85,11 @@ urlpatterns = [
     path('productsWare/', views.product_list, name='productsWare'),
     url(r'^remove/(?P<product_id>\d+)/$', views.remove_it, name='remove_it'),
     url(r'^update/(?P<product_id>\d+)/$', views.update_prod, name='update_prod'),
+    path('clientprofile/<int:client_id>/', views.client_profile, name='client_profile'),
+    path('get_last_month_statistic/', views.get_last_month_statistic, name='get_last_month_statistic'),
 
     path('newsupplier/', views.new_supplier, name='newsupplier'),
+    #path('newproduct/', views.
     #url(r'^$', views.cart_detail, name='cart_detail'),
 
 ]
