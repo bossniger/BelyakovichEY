@@ -21,7 +21,46 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        <canvas id="chart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script>
+window.onload = function () {
+    var data = [
+    {% for item in data %}
+      {{ item.population }},
+    {% endfor %}
+  ]
+   var labels = [
+    {% for item in data %}
+      "{{ item.city }}",
+    {% endfor %}
+  ]
+  console.log(data);
+  console.log(labels);
+  var config = {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'A random dataset',
+          backgroundColor: 'black',
+          borderColor: 'lightblue',
+          data: data,
+          fill: false
+        }
+      ]
+    },
+    options: {
+      responsive: true
+    }
+  };
+
+  var ctx = document.getElementById('chart').getContext('2d');
+  window.myLine = new Chart(ctx, config);
+};
+</script>
                                     </div>
                                     <hr>
                                         Доходы

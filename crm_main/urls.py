@@ -73,6 +73,7 @@ urlpatterns = [
     path('oauth/', include('social_django.urls', namespace='social')),
     path('charts/', ChartView.as_view(template_name='common/charts.html'), name='charts'),
     path('tables/', OrderListView.as_view(template_name ='common/tables.html'), name='tables'),
+    path('newproduct/', views.new_product, name='new_product'),
 
     #path('graph/', home, name='home'),
     path('pie-chart/', views.pie_chart, name='pie-chart'),
@@ -89,6 +90,7 @@ urlpatterns = [
     path('get_last_month_statistic/', views.get_last_month_statistic, name='get_last_month_statistic'),
 
     path('newsupplier/', views.new_supplier, name='newsupplier'),
+    path('testclient/', views.add_client, name = 'testclient')
     #path('newproduct/', views.
     #url(r'^$', views.cart_detail, name='cart_detail'),
 
