@@ -7,7 +7,7 @@ admin.site.register(Country)
 
 
 class ClientsAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'amount_orders', 'cost_of_orders']
+    list_display = ['first_name', 'last_name', 'amount_orders', 'orders_cost']
 
 
 admin.site.register(Clients, ClientsAdmin)

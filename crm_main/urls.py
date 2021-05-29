@@ -31,7 +31,7 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('about/', AboutView.as_view(), name='about'),
     path('suppliers/', views.suppliers_list, name='suppliers'),
-    path('clients/', views.clients_list, name='clients_list'),
+    path('clients/', views.clients, name='clients'),
     path('register/', SignUpView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(
         template_name='common/login.html'),

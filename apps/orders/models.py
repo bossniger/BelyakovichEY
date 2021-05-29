@@ -12,7 +12,14 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
-
+    STATUS_CHOICES = (
+        ('Новый', ''),
+        ('В обработке', 'В обработке'),
+        ('Уточняется', 'Уточняется'),
+        ('Доставка', 'Доставка'),
+        ('Выполнен', 'Выполнен'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, blank=True)
 
     class Meta:
         ordering = ('-created',)
@@ -23,7 +30,7 @@ class Order(models.Model):
         return f'Order {self.pk}'
 
     def get_total_cost(self):
-        return sum(item.get_cost() for item in self.items.all())
+        return sum(item.cost for item in self.items.all())
 
 
 class OrderItem(models.Model):
@@ -35,6 +42,7 @@ class OrderItem(models.Model):
     def __str__(self):
         return '{}'.format(self.id)
 
-    def get_cost(self):
-        return self.price * self.quantity
+    @property
+    def cost(self):
+        return float(self.price * self.quantity)
 # Create your models here.

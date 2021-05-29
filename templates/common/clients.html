@@ -13,9 +13,10 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Имя</th>
                                             <th>Фамилия</th>
-                                            <th>Информация</th>
+                                            <th>Имя</th>
+                                            <th>Кол-во заказов</th>
+                                            <th>Сумма заказов</th>
 
                                         </tr>
                                     </thead>
@@ -23,8 +24,10 @@
                                     {% for client in clients %}
                                         <tr>
                                             <td>{{client.id}}</td>
-                                            <td>{{client.first_name}}</td>
                                             <td>{{client.last_name}}</td>
+                                            <td>{{client.first_name}}</td>
+                                            <td>{{ client.amount_orders }}</td>
+                                            <td>{{ client.orders_cost }}</td>
                                             <td><a href="{% url "client_profile" client.id %}" class="btn btn-primary">
                                     <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> Подробнее
                                 </a></td>
