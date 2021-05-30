@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+from apps.common.models import Clients
 from apps.shop.models import Product
 from apps.userprofile.models import Profile
 
@@ -64,3 +65,9 @@ class NewProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ('category', 'supply', 'name', 'description', 'price', 'stock', 'available',)
+
+
+class ClientProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Clients
+        fields = ('first_name', 'last_name', 'email', 'phone_number', 'address', 'amount_orders', 'orders_cost', 'city')

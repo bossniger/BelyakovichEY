@@ -13,13 +13,13 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
     STATUS_CHOICES = (
-        ('Новый', ''),
+        ('Новый', 'Новый'),
         ('В обработке', 'В обработке'),
         ('Уточняется', 'Уточняется'),
         ('Доставка', 'Доставка'),
         ('Выполнен', 'Выполнен'),
     )
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, blank=True)
+    status = models.CharField(default='Новый', max_length=20, choices=STATUS_CHOICES, blank=True)
 
     class Meta:
         ordering = ('-created',)

@@ -19,7 +19,7 @@ from django.urls import path, include
 
 from apps.common import views
 from apps.common.views import HomeView, SignUpView, DashboardView, ProfileUpdateView, ProfileView, ChartView, \
-    OrderListView, AboutView, ClientsView, SuppliersListView
+    OrderListView, AboutView, ClientsView, SuppliersListView, TasksView
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,10 +28,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='home'),
     path('profile-update/', ProfileUpdateView.as_view(), name='profile-update'),
+    path('tasks/', views.tasks, name='tasks'),
+    path('check_order/<int:order_id>/', views.check_order, name='check_order'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('about/', AboutView.as_view(), name='about'),
     path('suppliers/', views.suppliers_list, name='suppliers'),
     path('clients/', views.clients, name='clients'),
+    path('client_profile_update/<int:client_id>/', views.client_profile_update, name='client_profile_update'),
+    path('clientprofile/<int:client_id>/', views.client_profile, name='client_profile'),
     path('register/', SignUpView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(
         template_name='common/login.html'),
@@ -86,7 +90,7 @@ urlpatterns = [
     path('productsWare/', views.product_list, name='productsWare'),
     url(r'^remove/(?P<product_id>\d+)/$', views.remove_it, name='remove_it'),
     url(r'^update/(?P<product_id>\d+)/$', views.update_prod, name='update_prod'),
-    path('clientprofile/<int:client_id>/', views.client_profile, name='client_profile'),
+
     path('get_last_month_statistic/', views.get_last_month_statistic, name='get_last_month_statistic'),
 
     path('newsupplier/', views.new_supplier, name='newsupplier'),

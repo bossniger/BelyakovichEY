@@ -23,10 +23,14 @@
                 <h2>Клиент №:{{id}}</h2>
                 <p><strong>Фамилия: </strong>{{last_name}} </p>
                 <p><strong>Имя: </strong>{{first_name}} </p>
+                <p><strong>E-mail: </strong>{{email}} </p>
+                <p><strong>Город: </strong>{{city}} </p>
+                <p><strong>Адрес: </strong>{{address}} </p>
+
 {#                <p><strong>Статус: </strong>{{user.profile.bio}} </p>#}
 {#                <p><strong>Номер телефона: </strong>{{user.profile.phone_number}} </p>#}
 {#                <p><strong>Дата рождения: </strong>{{user.profile.birth_date}} </p>#}
-                <a href="{% url 'profile-update' %}" class="btn btn-sm btn-primary shadow-sm">Изменить профиль</a>
+                <a href="{% url 'client_profile_update'  id %}" class="btn btn-sm btn-primary shadow-sm">Изменить профиль</a>
             </div>
           </div>
         </div>
