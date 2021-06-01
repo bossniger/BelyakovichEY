@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+				<div class="span7">
+					<h1>Задачи</h1>
+
+					<div class="priority high"><span>Высокий приоритет</span></div>
+                    {% for item in low_p %}
+					<div class="task high">
+						<div class="desc">
+							<div class="title"><a href="{% url 'check_order' item.id %}">Заказ №{{ item.pk }}</a></div>
+							<div>{{ item.last_name }} {{ item.first_name }}</div>
+						</div>
+						<div class="time">
+							<div class="desc"></div>
+							<div> {{ item.status }}</div>
+						</div>
+					</div>
+                    {% endfor %}
+
+
+					<div class="priority medium"><span>Средний приоритет</span></div>
+                {% for item in med_p %}
+					<div class="task medium">
+						<div class="desc">
+
+                            <div class="title"><a href="">Заказ №:{{ item.pk }}</a></div>
+							<div>{{ item.last_name }} {{ item.first_name }}</div>
+
+						</div>
+						<div class="time">
+							<div class="date"></div>
+							<div> {{ item.status }}</div>
+						</div>
+					</div>
+                {% endfor %}
+					<div class="priority low"><span>Низкий приоритет</span></div>
+                {% for item in high_p %}
+					<div class="task low">
+						<div class="desc">
+                            <div class="title"><a href="">Заказ №:{{ item.pk }}</a></div>
+							<div>{{ item.last_name }} {{ item.first_name }}</div>
+						</div>
+						<div class="time">
+							<div class="date"></div>
+							<div>{{ item.status }} </div>
+						</div>
+					</div>
+                {% endfor %}
+					<div class="clearfix"></div>
+
+				</div>
+
+{% endblock content %}

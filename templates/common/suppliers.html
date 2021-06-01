@@ -19,6 +19,7 @@
                                             <th>Город</th>
                                             <th>Страна</th>
                                             <th>Телефон</th>
+                                            <th>Действие</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,6 +32,9 @@
                                             <td>{{supplier.city}}</td>
                                             <td>{{supplier.country}}</td>
                                             <td>{{supplier.phone}}</td>
+                                            <td><a href="{% url 'products' %}" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> Поставка
+                                </a></td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>

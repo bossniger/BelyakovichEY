@@ -5,7 +5,7 @@
 {% block content %}
 <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Заказ №:  </h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Заказ №: {{ item.1}} </h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -18,18 +18,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {% for supplier in suppliers %}
+
                                         <tr>
-                                            <td>{{supplier.id}}</td>
-                                            <td>{{supplier.name}}</td>
-                                            <td>{{supplier.agent}}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
-                                    {% endfor %}
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-    <a href="{% url 'newsupplier' %}" class="btn btn-sm btn-primary shadow-sm">Новый поставщик</a>
+{#    <a href="{% url 'newsupplier' %}" class="btn btn-sm btn-primary shadow-sm">Новый поставщик</a>#}
                     </div>
 
                 </div>

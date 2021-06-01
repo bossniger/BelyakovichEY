@@ -17,19 +17,10 @@
                                             <th>Индекс</th>
                                             <th>Создан</th>
                                             <th>Статус</th>
+                                            <th>Действие</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Имя</th>
-                                            <th>Фамилия</th>
-                                            <th>Адрес</th>
-                                            <th>Индекс</th>
-                                            <th>Создан</th>
-                                            <th>Статус</th>
-                                        </tr>
-                                    </tfoot>
+
                                     <tbody>
                                     {% for i in object_list %}
                                         <tr>
@@ -39,7 +30,10 @@
                                             <td>{{i.address}}</td>
                                             <td>{{i.postal_code}}</td>
                                             <td>{{i.created}}</td>
-                                            <td>{{i.paid}}</td>
+                                            <td>{{i.status}}</td>
+                                            <td> <a href="{% url "change_status" object_list.id %}" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> Принять
+                                </a></td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>

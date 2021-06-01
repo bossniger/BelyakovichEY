@@ -86,12 +86,12 @@ urlpatterns = [
     path('orders/', include('apps.orders.urls'), name='orders'),
     path('payment/', include('apps.payment.urls'), name='payment'),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
-
+    path('products/', views.product, name='products'),
     path('productsWare/', views.product_list, name='productsWare'),
     url(r'^remove/(?P<product_id>\d+)/$', views.remove_it, name='remove_it'),
     url(r'^update/(?P<product_id>\d+)/$', views.update_prod, name='update_prod'),
-
-    path('get_last_month_statistic/', views.get_last_month_statistic, name='get_last_month_statistic'),
+    path('change_status/<int:order_id>', views.change_status, name='change_status'),
+    path('order_statictic/', views.get_last_month_statistic, name='order_statistic'),
 
     path('newsupplier/', views.new_supplier, name='newsupplier'),
     path('testclient/', views.add_client, name = 'testclient')

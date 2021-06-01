@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="shop:product_list">Склад</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li {% if not category %} class="nav-item active"{% endif %}>
+        <a class="nav-link" href="{% url 'productsWare' %}">Все <span class="sr-only">(current)</span></a>
+      </li>
+      {% for c in categories %}
+      <li  {% if category.slug == c.slug %} class="nav-item"{% endif %}>
+        <a class="nav-link" href="{{ c.get_absolute_url }}">{{c.name}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Склад</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                          <th>Категория</th>
+                                            <th>Наименование</th>
+                                            <th>Цена</th>
+                                            <th>Осталось</th>
+                                            <th>Создан</th>
+                                            <th>В продаже</th>
+                                            <th>Действие</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if category %}{{ category.name }}{% else %}Товары{% endif %}
+                                    {% for product in products %}
+                                        <tr>
+                                            <td>{{product.id}}</td>
+                                            <td>{{product.category}}</td>
+                                            <td>{{product.name}}</td>
+                                            <td>{{product.price}}</td>
+                                            <td>{{product.stock}}</td>
+                                            <td>{{product.created}}</td>
+                                            <td>{{product.available}}</td>
+                                            <td> <a href="{% url "cart:cart_add" product.id %}" method="post" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> В корзину
+                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+{% endblock %}

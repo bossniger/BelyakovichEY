@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 from apps.common.models import Clients
+from apps.orders.models import Order
 from apps.shop.models import Product
 from apps.userprofile.models import Profile
 
@@ -64,10 +65,17 @@ class ProductAddForm(forms.ModelForm):
 class NewProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('category', 'supply', 'name', 'description', 'price', 'stock', 'available',)
+        fields = ('category', 'supply', 'supplier', 'name', 'description', 'price', 'stock', 'available',)
 
 
 class ClientProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Clients
         fields = ('first_name', 'last_name', 'email', 'phone_number', 'address', 'amount_orders', 'orders_cost', 'city')
+
+
+class ChangeStatusForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ('status',)
+        readonly_field = ['first_name', 'last_name', 'email']
